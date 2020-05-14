@@ -7,6 +7,7 @@ import popupMenu from './modules/popupMenu';
 import smoothScroll from './modules/smoothScroll';
 import fullListServices from './modules/fullListServices';
 import popupClose from './modules/popupClose';
+import popupPrivacy from './modules/popupPrivacy';
 
 // Показ второго телефона в шапке
 showSecondPhone();
@@ -23,3 +24,6 @@ fullListServices();
 
 // Закрытие попапов
 popupClose();
+
+// Политика конфиденциальности
+popupPrivacy();
