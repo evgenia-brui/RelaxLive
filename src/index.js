@@ -2,4 +2,7 @@
 import '@babel/polyfill';
 import 'nodelist-foreach-polyfill';
 
-console.log('i`m index.js');
+import showSecondPhone from './modules/showSecondPhone';
+
+// Показ второго телефона в шапке
+showSecondPhone();
