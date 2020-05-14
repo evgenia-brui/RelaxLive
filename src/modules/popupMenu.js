@@ -1,15 +1,15 @@
+import popupMenuToggle from './popupMenuToggle';
+
 const popupMenu = () => {
     const menuButtonOpen = document.querySelector('.menu'),
-        menuButtonClose = document.querySelector('.close-menu'),
-        menuDialog = document.querySelector('.popup-dialog-menu'),
-        menuOpen = 'showHide-menu';
+        menuButtonClose = document.querySelector('.close-menu');
 
     menuButtonOpen.addEventListener('click', () => {
-        menuDialog.classList.add(menuOpen);
+        popupMenuToggle();
     });
 
     menuButtonClose.addEventListener('click', () => {
-        menuDialog.classList.remove(menuOpen);
+        popupMenuToggle();
     });
 };
 
