@@ -8,6 +8,7 @@ import smoothScroll from './modules/smoothScroll';
 import fullListServices from './modules/fullListServices';
 import popupClose from './modules/popupClose';
 import popupPrivacy from './modules/popupPrivacy';
+import maskPhone from './modules/maskPhone';
 
 // Показ второго телефона в шапке
 showSecondPhone();
@@ -27,3 +28,6 @@ popupClose();
 
 // Политика конфиденциальности
 popupPrivacy();
+
+// Маска телефона
+maskPhone();
