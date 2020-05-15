@@ -9,6 +9,8 @@ import fullListServices from './modules/fullListServices';
 import popupClose from './modules/popupClose';
 import popupPrivacy from './modules/popupPrivacy';
 import maskPhone from './modules/maskPhone';
+import tabs from './modules/tabs';
+import accordion from './modules/accordion';
 
 // Показ второго телефона в шапке
 showSecondPhone();
@@ -31,3 +33,9 @@ popupPrivacy();
 
 // Маска телефона
 maskPhone();
+
+// Табы
+tabs();
+
+// accordion
+accordion();
