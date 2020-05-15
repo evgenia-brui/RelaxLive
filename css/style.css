@@ -6483,3 +6483,5 @@ strong {
   display: none; }
 
 .visible {visibility: visible;}
+.show-second-phone {top: 25px;}
+.show-second-phone a {opacity: 1;}
