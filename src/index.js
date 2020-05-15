@@ -11,6 +11,7 @@ import popupPrivacy from './modules/popupPrivacy';
 import maskPhone from './modules/maskPhone';
 import tabs from './modules/tabs';
 import accordion from './modules/accordion';
+import popupOpenConsultation from './modules/popupOpenConsultation';
 
 // Показ второго телефона в шапке
 showSecondPhone();
@@ -39,3 +40,6 @@ tabs();
 
 // accordion
 accordion();
+
+// Открыть окно консультации
+popupOpenConsultation();
