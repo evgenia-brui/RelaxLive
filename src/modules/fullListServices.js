@@ -9,7 +9,7 @@ const fullListServices = () => {
             popupMenuToggle();
         }
 
-        popupRepairTypes.style.visibility = 'visible';
+        popupRepairTypes.classList.toggle('visible');
     }));
 };
 

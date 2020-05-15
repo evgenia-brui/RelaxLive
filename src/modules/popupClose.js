@@ -5,7 +5,7 @@ const popupClose = () => {
         let target = event.target;
 
         if (target.classList.contains('close') || !target.closest('.popup-dialog')) {
-            item.style.visibility = 'hidden';
+            item.classList.toggle('visible');
         }
     }));
 };
