@@ -1,8 +1,12 @@
 const popupClose = () => {
-    const popupCloseButtons = document.querySelectorAll('.popup > .close');
+    const popup = document.querySelectorAll('.popup');
 
-    popupCloseButtons.forEach(item => item.addEventListener('click', event => {
-        event.currentTarget.parentNode.style.visibility = 'hidden';
+    popup.forEach(item => item.addEventListener('click', event => {
+        let target = event.target;
+
+        if (target.classList.contains('close') || !target.closest('.popup-dialog')) {
+            item.style.visibility = 'hidden';
+        }
     }));
 };
 
