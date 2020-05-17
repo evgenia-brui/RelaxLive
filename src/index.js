@@ -15,6 +15,7 @@ import popupFormula from './modules/popupFormula';
 import repairTypes from './modules/repairTypes';
 import partners from './modules/partners';
 import scheme from './modules/scheme';
+import reviews from './modules/reviews';
 
 // Показ второго телефона в шапке
 showSecondPhone();
@@ -55,3 +56,6 @@ partners();
 
 // Как мы работаем
 scheme();
+
+// Отзывы
+reviews();
