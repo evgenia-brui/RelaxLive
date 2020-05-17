@@ -32,12 +32,14 @@ const slider = params => {
 
     const responsive = () => {
         pageWidth = document.documentElement.clientWidth;
-        for (let breakpoint in sliderItemsVisible) {
-            if (pageWidth > breakpoint) {
-                visibleSlide = sliderItemsVisible[breakpoint];
-                init();
+        if (sliderItemsVisible) {
+            for (let breakpoint in sliderItemsVisible) {
+                if (pageWidth > breakpoint) {
+                    visibleSlide = sliderItemsVisible[breakpoint];
+                }
             }
         }
+        init();
     };
 
     const init = () => {
@@ -48,7 +50,9 @@ const slider = params => {
         // получаем ширину слайда в px
         // количество слайдов * на ширину и записываем ширину formula-slider
         slideItems.style.width = slideWidth * (slideLength + slideCloneLength) + 'px';
+        slideItems.style.transition = 'all 0.25s ease 0s';
         slideAll.forEach(item => {
+            item.style.float = 'left';
             item.style.width = slideWidth + 'px';
             item.classList.remove(sliderItemActive);
         });
@@ -178,22 +182,5 @@ const slider = params => {
     responsive();
     window.addEventListener('resize', () => responsive());
 };
-
-slider({
-    sliderBlock        : '.formula-slider-wrap',
-    sliderItems        : '.formula-slider',
-    sliderItem         : '.formula-slider__slide',
-    sliderItemActive   : 'active-item',
-    sliderDots         : false,
-    sliderNav          : '.slider-arrow',
-    sliderPrev         : '#formula-arrow_left',
-    sliderNext         : '#formula-arrow_right',
-    sliderAutoplay     : false,
-    sliderSpeed        : 10000,
-    sliderItemsVisible : {
-        900 : 3,
-        0   : 1
-    }
-});
 
 export default slider;

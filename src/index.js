@@ -9,11 +9,10 @@ import fullListServices from './modules/fullListServices';
 import popupClose from './modules/popupClose';
 import popupPrivacy from './modules/popupPrivacy';
 import maskPhone from './modules/maskPhone';
-import tabs from './modules/tabs';
 import accordion from './modules/accordion';
 import popupOpenConsultation from './modules/popupOpenConsultation';
 import popupFormula from './modules/popupFormula';
-import slider from './modules/slider';
+import repairTypes from './modules/repairTypes';
 
 // Показ второго телефона в шапке
 showSecondPhone();
@@ -37,9 +36,6 @@ popupPrivacy();
 // Маска телефона
 maskPhone();
 
-// Табы
-tabs();
-
 // accordion
 accordion();
 
@@ -49,5 +45,5 @@ popupOpenConsultation();
 // Подсказки в блоке Формула успешности
 popupFormula();
 
-// Слайдер
-//slider();
+// Виды ремонта
+repairTypes();

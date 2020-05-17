@@ -6492,4 +6492,7 @@ strong {
 .formula-slider__slide {float: left;}
 .formula-slider {transition: all 0.25s ease 0s;}
 
-.slider-arrow svg {pointer-events: none;}
+.types-repair:not(.active) {display: none;}
+
+.slider-arrow svg,
+.nav-arrow svg {pointer-events: none;}

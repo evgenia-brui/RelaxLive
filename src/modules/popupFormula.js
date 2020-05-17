@@ -1,3 +1,5 @@
+import slider from './slider';
+
 const popupFormula = () => {
     const formula = document.querySelectorAll('.formula-item');
 
@@ -14,6 +16,23 @@ const popupFormula = () => {
             const popupBottom = item.querySelector('.formula-item-popup-bottom');
             if (popupBottom) popupBottom.classList.remove('formula-item-popup-bottom');
         });
+    });
+
+    slider({
+        sliderBlock        : '.formula-slider-wrap',
+        sliderItems        : '.formula-slider',
+        sliderItem         : '.formula-slider__slide',
+        sliderItemActive   : 'active-item',
+        sliderDots         : false,
+        sliderNav          : '.slider-arrow',
+        sliderPrev         : '#formula-arrow_left',
+        sliderNext         : '#formula-arrow_right',
+        sliderAutoplay     : false,
+        sliderSpeed        : 10000,
+        sliderItemsVisible : {
+            900 : 3,
+            0   : 1
+        }
     });
 };
 
