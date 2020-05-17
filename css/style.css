@@ -6485,3 +6485,11 @@ strong {
 .visible {visibility: visible;}
 .show-second-phone {top: 25px;}
 .show-second-phone a {opacity: 1;}
+.formula .row:hover {z-index: 1;}
+.formula-item-popup-bottom {transform: translateY(5px);padding-top: 35px;top: 155px;z-index: 1;}
+.active-item .formula-item-popup-bottom::before {transform: rotateZ(180deg);}
+.formula-slider-wrap {overflow: hidden;}
+.formula-slider__slide {float: left;}
+.formula-slider {transition: all 0.25s ease 0s;}
+
+.slider-arrow svg {pointer-events: none;}

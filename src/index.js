@@ -12,6 +12,8 @@ import maskPhone from './modules/maskPhone';
 import tabs from './modules/tabs';
 import accordion from './modules/accordion';
 import popupOpenConsultation from './modules/popupOpenConsultation';
+import popupFormula from './modules/popupFormula';
+import slider from './modules/slider';
 
 // Показ второго телефона в шапке
 showSecondPhone();
@@ -43,3 +45,9 @@ accordion();
 
 // Открыть окно консультации
 popupOpenConsultation();
+
+// Подсказки в блоке Формула успешности
+popupFormula();
+
+// Слайдер
+//slider();
