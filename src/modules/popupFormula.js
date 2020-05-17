@@ -29,6 +29,7 @@ const popupFormula = () => {
         sliderNext         : '#formula-arrow_right',
         sliderAutoplay     : false,
         sliderSpeed        : 10000,
+        sliderCenterMode   : true,
         sliderItemsVisible : {
             900 : 3,
             0   : 1

@@ -1,4 +1,5 @@
 const slider = params => {
+    console.log(params);
     const {
         sliderBlock,
         sliderItems,
@@ -6,32 +7,34 @@ const slider = params => {
         sliderItemActive,
         sliderItemsVisible,
         sliderDots = false,
+        sliderPagination = false,
+        sliderCurrentSlide,
+        sliderTotalSlide,
         sliderNav,
         sliderPrev,
         sliderNext,
         sliderAutoplay,
-        sliderSpeed
+        sliderSpeed,
+        sliderCenterMode = false,
+        sliderLoop = true,
+        sliderMulti = false,
     } = params;
 
     const slider = document.querySelector(sliderBlock),
-        slideItems = document.querySelector(sliderItems),
-        slide = document.querySelectorAll(sliderItem),
+        slideItems = document.querySelector(`${sliderBlock} ${sliderItems}`),
+        slide = document.querySelectorAll(`${sliderItems} ${sliderItem}`),
         slideLength = slide.length,
-        slideCloneLength = 2;
+        slideLengthHalf = slideLength / 2;
 
     let currentSlide = 0,
         visibleSlide = 1,
+        slideCloneLength = 0,
         slideWidth,
         interval,
-        pageWidth = document.documentElement.clientWidth;
+        pageWidth = document.documentElement.clientWidth,
+        slideAll = document.querySelectorAll(`${sliderItems} ${sliderItem}`);
 
-    slideItems.append(slide[0].cloneNode(true)); // склонируем первый элемент в конец
-    slideItems.prepend(slide[slideLength - 1].cloneNode(true)); // склонируем последний элемент в начало
-    
-    const slideAll = document.querySelectorAll(sliderItem);
-
-    const responsive = () => {
-        pageWidth = document.documentElement.clientWidth;
+    const getVisibleSlide = () => {
         if (sliderItemsVisible) {
             for (let breakpoint in sliderItemsVisible) {
                 if (pageWidth > breakpoint) {
@@ -39,10 +42,15 @@ const slider = params => {
                 }
             }
         }
-        init();
     };
 
-    const init = () => {
+    const responsive = () => {
+        pageWidth = document.documentElement.clientWidth;
+        getVisibleSlide();
+        renderSlide();
+    };
+
+    const renderSlide = () => {
         // получим ширину слайдера formula-slider-wrap
         const sliderWidth = slider.clientWidth;
         // эту ширину делем на количесто слайдов видимых
@@ -57,22 +65,50 @@ const slider = params => {
             item.classList.remove(sliderItemActive);
         });
 
-        //slideItems.style.transform = `translate3d(${0 - slideWidth * (currentSlide - Math.floor(visibleSlide / 2))}px, 0px, 0px)`;
         if (visibleSlide < 3) {
-            // отменим слайд активным
-            slideAll[currentSlide + slideCloneLength / 2].classList.add(sliderItemActive);
-            slideItems.style.transform = `translate3d(${0 - slideWidth * (currentSlide + slideCloneLength / 2)}px, 0px, 0px)`;
+            // отметим слайд активным
+            slideAll[currentSlide + Math.floor(slideLengthHalf)].classList.add(sliderItemActive);
+            slideItems.style.transform = `translate3d(${0 - slideWidth * (currentSlide + Math.floor(slideLengthHalf))}px, 0px, 0px)`;
         } else {
-            // отменим слайд по центру активным
-            slideAll[currentSlide + Math.floor(visibleSlide / 2)].classList.add(sliderItemActive);
-            slideItems.style.transform = `translate3d(${0 - slideWidth * currentSlide}px, 0px, 0px)`;
+            // отметим слайд по центру активным
+            slideAll[currentSlide + Math.floor(slideLengthHalf)].classList.add(sliderItemActive);
+            slideItems.style.transform = `translate3d(${0 - slideWidth * (currentSlide + Math.floor(visibleSlide / 2) + 1)}px, 0px, 0px)`;
         }
+    };
+
+    const loop = () => {
+        console.log(slideLength, slideLengthHalf);
+
+        for (let i = 0; i < slideLengthHalf; i++) {
+            const clone = slide[i].cloneNode(true);
+            clone.classList.add('clone');
+            clone.classList.remove(sliderItemActive);
+            slideItems.append(clone);
+            slideCloneLength++;
+        }
+        for (let i = slideLength - 1; i >= slideLengthHalf; i--) {
+            const clone = slide[i].cloneNode(true);
+            clone.classList.add('clone');
+            clone.classList.remove(sliderItemActive);
+            slideItems.prepend(clone);
+            slideCloneLength++;
+        }
+
+        slideAll = document.querySelectorAll(`${sliderItems} ${sliderItem}`);
+    };
+
+    const pagination = () => {
+        const currentSlideText = document.querySelector(`${sliderBlock} ${sliderCurrentSlide}`),
+            totalSlideText = document.querySelector(`${sliderBlock} ${sliderTotalSlide}`);
+
+        currentSlideText.textContent = currentSlide + 1;
+        totalSlideText.textContent = slideLength;
     };
 
     if (sliderDots) {
         const portfolioDots = document.querySelector(sliderDots);
 
-        const addPagination = () => {
+        const addDots = () => {
             slide.forEach((item, index) => {
                 const li = document.createElement('li');
                 li.classList.add('dot');
@@ -80,7 +116,7 @@ const slider = params => {
                 portfolioDots.append(li);
             });
         };
-        addPagination();
+        addDots();
 
         const dot = document.querySelectorAll('.dot');
     }
@@ -90,13 +126,15 @@ const slider = params => {
     };
 
     const nextSlide = (elem, index, strClass) => {
+        pagination();
         elem[index].classList.add(strClass);
         //slideItems.style.transform = `translate3d(${0 - slideWidth * (currentSlide - Math.floor(visibleSlide / 2))}px, 0px, 0px)`;
         if (visibleSlide < 3) {
-            slideItems.style.transform = `translate3d(${0 - slideWidth * (currentSlide + slideCloneLength / 2)}px, 0px, 0px)`;
+            slideItems.style.transform = `translate3d(${0 - slideWidth * (currentSlide + Math.floor(slideLengthHalf))}px, 0px, 0px)`;
         } else {
-            slideItems.style.transform = `translate3d(${0 - slideWidth * currentSlide}px, 0px, 0px)`;
+            slideItems.style.transform = `translate3d(${0 - slideWidth * (currentSlide + Math.floor(visibleSlide / 2) + 1)}px, 0px, 0px)`;
         }
+        console.log('nextSlide' + currentSlide);
     };
 
     const stopSlide = () => {
@@ -106,17 +144,26 @@ const slider = params => {
     slider.addEventListener('click', event => {
         event.preventDefault();
         const target = event.target;
+        console.log(event);
 
-        if (!target.matches(sliderNav + ', .dot, ' + sliderItem)) {
+        // Переменная для слайдеров в табах
+        let sliderNavDinamic = '';
+
+        if (sliderMulti) sliderNavDinamic = `[data-current-tab="${slider.getAttribute('data-current-tab')}"] `;
+
+        if (!target.matches(sliderNavDinamic + sliderNav + ', .dot, ' + sliderItem)) {
             return;
         }
+
+        //console.log(sliderItems + ' ' + sliderNav);
+        //console.log(sliderNavDinamic);
 
         prevSlide(slide, currentSlide, sliderItemActive);
         if (sliderDots) prevSlide(dot, currentSlide, 'dot-active');
 
-        if (target.matches(sliderNext)) {
+        if (target.matches(sliderNavDinamic + sliderNext)) {
             currentSlide++;
-        } else if (target.matches(sliderPrev)) {
+        } else if (target.matches(sliderNavDinamic + sliderPrev)) {
             currentSlide--;
         } else if (sliderDots && target.matches('.dot')) {
             dot.forEach((elem, index) => {
@@ -130,7 +177,7 @@ const slider = params => {
                     if (visibleSlide < 3) {
                         currentSlide = index;
                     } else {
-                        currentSlide = index - slideCloneLength / 2;
+                        currentSlide = index - slideCloneLength;
                     }
                 }
             });
@@ -179,7 +226,13 @@ const slider = params => {
         startSlide(sliderSpeed);
     }
 
-    responsive();
+    const init = () => {
+        if (sliderPagination) pagination();
+        if (sliderLoop) loop();
+        responsive();
+    };
+
+    init();
     window.addEventListener('resize', () => responsive());
 };
 

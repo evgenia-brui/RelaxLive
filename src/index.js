@@ -14,6 +14,8 @@ import popupOpenConsultation from './modules/popupOpenConsultation';
 import popupFormula from './modules/popupFormula';
 import repairTypes from './modules/repairTypes';
 
+let repairTypesCurrentSlider = 1;
+
 // Показ второго телефона в шапке
 showSecondPhone();
 

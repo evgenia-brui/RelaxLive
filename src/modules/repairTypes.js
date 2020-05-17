@@ -11,15 +11,20 @@ const repairTypes = () => {
             sliderItem         : '.repair-types-slider__slide',
             sliderItemActive   : 'active-item',
             sliderDots         : false,
+            sliderPagination   : true,
+            sliderCurrentSlide : '.slider-counter-content__current',
+            sliderTotalSlide   : '.slider-counter-content__total',
             sliderNav          : '.slider-arrow',
             sliderPrev         : '#repair-types-arrow_left',
             sliderNext         : '#repair-types-arrow_right',
             sliderAutoplay     : false,
             sliderSpeed        : 10000,
+            sliderMulti        : true,
         });
     }
 
     tabs({
+        classMainTabs     : '.repair-types-slider-wrap',
         classButtons      : '.nav-list-repair',
         classButton       : '.repair-types-nav__item',
         classButtonActive : 'active',

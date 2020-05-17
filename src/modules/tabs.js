@@ -1,5 +1,6 @@
 const tabs = params => {
     const {
+        classMainTabs,
         classButtons,
         classButton,
         classButtonActive,
@@ -8,15 +9,20 @@ const tabs = params => {
         classContentActive,
     } = params;
     
-    const listButtons = document.querySelector(classButtons),
+    const tabsBlock = document.querySelector(classMainTabs),
+        listButtons = document.querySelector(classButtons),
         listContents = document.querySelector(classContents),
         tabsButtons = document.querySelectorAll(classButton);
+
+    tabsBlock.setAttribute('data-current-tab', 1);
     document.querySelector(classButton).classList.add(classButtonActive);
     document.querySelector(classContent).classList.add(classContentActive);
 
     tabsButtons.forEach(button => button.addEventListener('click', event => {
         let target = event.target;
         const showId = target.getAttribute('data-tab-button');
+
+        tabsBlock.setAttribute('data-current-tab', showId);
 
         listButtons.querySelector(classButton + '.' + classButtonActive).classList.remove(classButtonActive);
         target.classList.add(classButtonActive);
