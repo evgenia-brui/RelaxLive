@@ -13,8 +13,7 @@ import accordion from './modules/accordion';
 import popupOpenConsultation from './modules/popupOpenConsultation';
 import popupFormula from './modules/popupFormula';
 import repairTypes from './modules/repairTypes';
-
-let repairTypesCurrentSlider = 1;
+import partners from './modules/partners';
 
 // Показ второго телефона в шапке
 showSecondPhone();
@@ -49,3 +48,6 @@ popupFormula();
 
 // Виды ремонта
 repairTypes();
+
+// Партнеры
+partners();

@@ -13,7 +13,7 @@ const slider = params => {
         sliderNav,
         sliderPrev,
         sliderNext,
-        sliderAutoplay,
+        sliderAutoplay = false,
         sliderSpeed,
         sliderCenterMode = false,
         sliderLoop = true,
@@ -126,7 +126,7 @@ const slider = params => {
     };
 
     const nextSlide = (elem, index, strClass) => {
-        pagination();
+        if (sliderPagination) pagination();
         elem[index].classList.add(strClass);
         //slideItems.style.transform = `translate3d(${0 - slideWidth * (currentSlide - Math.floor(visibleSlide / 2))}px, 0px, 0px)`;
         if (visibleSlide < 3) {
@@ -231,6 +231,8 @@ const slider = params => {
         if (sliderLoop) loop();
         responsive();
     };
+
+    console.log();
 
     init();
     window.addEventListener('resize', () => responsive());

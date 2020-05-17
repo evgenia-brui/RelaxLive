@@ -19,7 +19,7 @@ const repairTypes = () => {
             sliderNext         : '#repair-types-arrow_right',
             sliderAutoplay     : false,
             sliderSpeed        : 10000,
-            sliderMulti        : true,
+            sliderMulti        : '.repair-types-slider',
         });
     }
 
