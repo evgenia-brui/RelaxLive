@@ -3124,6 +3124,7 @@ div.wave-block:nth-child(17):after {
     .scheme-slider-wrap {
       position: relative; }
     .scheme-slider__slide {
+      display: none;
       position: relative;
       overflow: hidden; }
       @media (max-width: 575px) {
@@ -3135,7 +3136,6 @@ div.wave-block:nth-child(17):after {
     position: absolute;
     bottom: 15px;
     right: 15px;
-    display: none;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
