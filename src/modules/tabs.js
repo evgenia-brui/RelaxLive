@@ -1,6 +1,7 @@
 const tabs = params => {
     const {
         classMainTabs,
+        classTitleTabs,
         classButtons,
         classButton,
         classButtonActive,
@@ -17,10 +18,13 @@ const tabs = params => {
     tabsBlock.setAttribute('data-current-tab', 1);
     document.querySelector(classButton).classList.add(classButtonActive);
     document.querySelector(classContent).classList.add(classContentActive);
+    if (classTitleTabs) tabsBlock.querySelector(classTitleTabs).textContent = listButtons.querySelector(classButton).textContent;
 
     tabsButtons.forEach(button => button.addEventListener('click', event => {
         let target = event.target;
         const showId = target.getAttribute('data-tab-button');
+
+        if (classTitleTabs) tabsBlock.querySelector(classTitleTabs).textContent = listButtons.querySelector(`[data-tab-button="${showId}"]`).textContent;
 
         tabsBlock.setAttribute('data-current-tab', showId);
 

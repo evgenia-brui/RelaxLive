@@ -1,5 +1,5 @@
 const slider = params => {
-    console.log(params);
+    // console.log(params);
     const {
         sliderBlock,
         sliderItems,
@@ -77,7 +77,7 @@ const slider = params => {
     };
 
     const loop = () => {
-        console.log(slideLength, slideLengthHalf);
+        // console.log(slideLength, slideLengthHalf);
 
         for (let i = 0; i < slideLengthHalf; i++) {
             const clone = slide[i].cloneNode(true);
@@ -134,7 +134,7 @@ const slider = params => {
         } else {
             slideItems.style.transform = `translate3d(${0 - slideWidth * (currentSlide + Math.floor(visibleSlide / 2) + 1)}px, 0px, 0px)`;
         }
-        console.log('nextSlide' + currentSlide);
+        // console.log('nextSlide' + currentSlide);
     };
 
     const stopSlide = () => {
@@ -144,7 +144,7 @@ const slider = params => {
     slider.addEventListener('click', event => {
         event.preventDefault();
         const target = event.target;
-        console.log(event);
+        // console.log(event);
 
         // Переменная для слайдеров в табах
         let sliderNavDinamic = '';
@@ -231,8 +231,6 @@ const slider = params => {
         if (sliderLoop) loop();
         responsive();
     };
-
-    console.log();
 
     init();
     window.addEventListener('resize', () => responsive());

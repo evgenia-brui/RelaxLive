@@ -6488,7 +6488,11 @@ strong {
 .formula-slider__slide {float: left;}
 .formula-slider {transition: all 0.25s ease 0s;}
 
-.types-repair:not(.active) {display: none;}
+.nav-list-popup-repair {justify-content: start;}
+.popup-repair-types-nav__item + .popup-repair-types-nav__item {margin-left: 10px;}
+
+.types-repair:not(.active),
+.popup-repair-types-content-table__list:not(.active) {display: none;}
 
 .slider-arrow svg,
 .nav-arrow svg {pointer-events: none;}
