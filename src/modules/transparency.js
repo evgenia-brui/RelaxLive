@@ -41,7 +41,7 @@ const transparency = () => {
         sliderAutoplay     : false,
         sliderSpeed        : 10000,
         sliderItemsVisible : {
-            900 : 3,
+            1100 : 3,
             0   : 1
         }
     });

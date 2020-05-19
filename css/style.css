@@ -2017,7 +2017,7 @@ div.wave-block:nth-child(17):after {
         max-width: 220px; } }
     @media (max-width: 1024px) {
       .problems-item {
-        max-width: 340px; } }
+        max-width: 100%; } }
     .problems-item__title {
       width: 260px;
       margin-top: 8px;
@@ -6481,10 +6481,15 @@ strong {
 .show-second-phone {top: 25px;}
 .show-second-phone a {opacity: 1;}
 .formula .row:hover {z-index: 1;}
-.formula-item-popup-bottom {transform: translateY(5px);padding-top: 35px;top: 155px;z-index: 1;}
-.active-item .formula-item-popup-bottom::before {transform: rotateZ(180deg);}
+.formula-item-popup-bottom,
+.problems-item-popup-bottom {transform: translateY(5px);padding-top: 35px;top: 155px;z-index: 1;}
+.active-item .formula-item-popup-bottom::before,
+.active-item .problems-item-popup-bottom::before {transform: rotateZ(180deg);}
+.active-item .problems-item-popup {visibility: visible;opacity: 1;}
+
 .formula-slider-wrap,
 .transparency-slider-wrap,
+.problems-slider-wrap,
 #partners .wrapper {overflow: hidden;}
 .formula-slider__slide {float: left;}
 .formula-slider {transition: all 0.25s ease 0s;}
@@ -6498,6 +6503,7 @@ strong {
 
 .slider-arrow svg,
 .nav-arrow svg,
+.svg-wrap svg,
 .popup-arrow svg {pointer-events: none;}
 
 @media (min-width: 850px) {
