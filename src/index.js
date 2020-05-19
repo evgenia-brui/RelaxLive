@@ -16,6 +16,7 @@ import repairTypes from './modules/repairTypes';
 import partners from './modules/partners';
 import scheme from './modules/scheme';
 import reviews from './modules/reviews';
+import sendForm from './modules/sendForm';
 
 // Показ второго телефона в шапке
 showSecondPhone();
@@ -59,3 +60,6 @@ scheme();
 
 // Отзывы
 reviews();
+
+// Отправка формы
+sendForm();
