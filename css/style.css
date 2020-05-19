@@ -6484,9 +6484,11 @@ strong {
 .formula-item-popup-bottom {transform: translateY(5px);padding-top: 35px;top: 155px;z-index: 1;}
 .active-item .formula-item-popup-bottom::before {transform: rotateZ(180deg);}
 .formula-slider-wrap,
+.transparency-slider-wrap,
 #partners .wrapper {overflow: hidden;}
 .formula-slider__slide {float: left;}
 .formula-slider {transition: all 0.25s ease 0s;}
+.popup-transparency-slider-wrap {padding: 0 13px;}
 
 .nav-list-popup-repair {justify-content: start;}
 .popup-repair-types-nav__item + .popup-repair-types-nav__item {margin-left: 10px;}
@@ -6495,7 +6497,8 @@ strong {
 .popup-repair-types-content-table__list:not(.active) {display: none;}
 
 .slider-arrow svg,
-.nav-arrow svg {pointer-events: none;}
+.nav-arrow svg,
+.popup-arrow svg {pointer-events: none;}
 
 @media (min-width: 850px) {
   .reviews-slider-wrap {overflow: hidden;}

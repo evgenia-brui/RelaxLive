@@ -17,6 +17,7 @@ import partners from './modules/partners';
 import scheme from './modules/scheme';
 import reviews from './modules/reviews';
 import sendForm from './modules/sendForm';
+import transparency from './modules/transparency';
 
 // Показ второго телефона в шапке
 showSecondPhone();
@@ -63,3 +64,6 @@ reviews();
 
 // Отправка формы
 sendForm();
+
+// Документы
+transparency();

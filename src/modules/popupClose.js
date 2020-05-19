@@ -5,7 +5,9 @@ const popupClose = () => {
         let target = event.target;
 
         if (target.classList.contains('close') || !target.closest('.popup-dialog')) {
-            item.classList.toggle('visible');
+            if (!target.closest('.popup-arrow') && !target.closest('.popup-dialog-transparency')) { // очень извиняюсь
+                item.classList.toggle('visible');
+            }
         }
     }));
 };
