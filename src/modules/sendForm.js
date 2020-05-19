@@ -1,11 +1,11 @@
 const sendForm = () => {
     const errorMessage = 'Что-то пошло не так...',
         errorPrivacy = 'Согласитесь с условиями',
-        loadMessage = '<img src="/images/preloader.gif" alt="loading" style="height: 50px;" />',
-        successMessage = 'Спасибо! Мы скоро с вами свяжемся!';
+        loadMessage = '<img src="/images/preloader.gif" alt="loading" style="height: 50px;" />';
 
     const forms = document.querySelectorAll('form'),
-        statusMessage = document.createElement('div');
+        statusMessage = document.createElement('div'),
+        popupThank = document.querySelector('.popup-thank');
 
     statusMessage.style.color = '#f99b1c';
     statusMessage.style.fontWeight = 'bold';
@@ -36,8 +36,7 @@ const sendForm = () => {
                         if (response.status !== 200) {
                             throw new Error('Status network not 200');
                         }
-                        statusMessage.textContent = successMessage;
-                        setTimeout(() => statusMessage.textContent = '', 5000);
+                        popupThank.classList.toggle('visible');
                         form.reset();
                     })
                     .catch(error => {
