@@ -32,6 +32,7 @@ const slider = params => {
         slideCloneLength = 0,
         slideWidth,
         interval,
+        sliderNavDinamic = '', // Переменная для слайдеров в табах
         pageWidth = document.documentElement.clientWidth,
         slideAll = document.querySelectorAll(`${sliderItems} ${sliderItem}`);
 
@@ -102,8 +103,21 @@ const slider = params => {
         const currentSlideText = document.querySelector(`${sliderBlock} ${sliderCurrentSlide}`),
             totalSlideText = document.querySelector(`${sliderBlock} ${sliderTotalSlide}`);
 
-        currentSlideText.textContent = currentSlide + 1;
-        totalSlideText.textContent = slideLength;
+        if (sliderMulti) {
+            let currentSlider = slider.getAttribute('data-current-tab');
+            if (!currentSlider) currentSlider = 1;
+            const currentSliderElem = slider.querySelector(`[data-slider="${currentSlider}"]`);
+            const currentSliderElemSlide = currentSliderElem.querySelectorAll(`${sliderItem}:not(.clone)`);
+            let slideActive = 1;
+            currentSliderElemSlide.forEach((item, index) => {
+                if (item.classList.contains(sliderItemActive)) slideActive = index + 1;
+            });
+            currentSlideText.textContent = slideActive;
+            totalSlideText.textContent = currentSliderElemSlide.length;
+        } else {
+            currentSlideText.textContent = currentSlide + 1;
+            totalSlideText.textContent = slideLength;
+        }
     };
 
     if (sliderDots) {
@@ -145,12 +159,11 @@ const slider = params => {
     slider.addEventListener('click', event => {
         event.preventDefault();
         const target = event.target;
-        // console.log(event);
+        //console.log(event);
 
-        // Переменная для слайдеров в табах
-        let sliderNavDinamic = '';
-
-        if (sliderMulti) sliderNavDinamic = `[data-current-tab="${slider.getAttribute('data-current-tab')}"] `;
+        if (sliderMulti) {
+            sliderNavDinamic = `[data-current-tab="${slider.getAttribute('data-current-tab')}"]`;
+        }
 
         if (!target.matches(sliderNavDinamic + sliderNav + ', .dot, ' + sliderItem)) {
             return;
