@@ -163,8 +163,14 @@ const slider = params => {
 
         if (sliderMulti) sliderNavDinamic = `[data-current-tab="${slider.getAttribute('data-current-tab')}"] `;
 
-        if (!target.matches(sliderNavDinamic + sliderNav + ', .dot, ' + sliderItem)) {
+        if (!target.matches(sliderNavDinamic + sliderNav + ', .dot')) {
             return;
+        }
+
+        if (sliderCenterMode) {
+            if (!target.matches(sliderItem)) {
+                return;
+            }
         }
 
         //console.log(sliderItems + ' ' + sliderNav);

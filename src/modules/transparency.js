@@ -1,18 +1,6 @@
 import slider from './slider';
 
 const transparency = () => {
-    const transparencyItemImg = document.querySelectorAll('.transparency-item__img'),
-        popupTransparency = document.querySelector('.popup-transparency'),
-        sliderCounterContent_current = popupTransparency.querySelector('.slider-counter-content__current'),
-        sliderCounterContent_total = popupTransparency.querySelector('.slider-counter-content__total');
-
-    sliderCounterContent_total.textContent = transparencyItemImg.length;
-
-    transparencyItemImg.forEach(item => item.addEventListener('click', () => {
-        popupTransparency.classList.toggle('visible');
-        sliderCounterContent_current.textContent = item.getAttribute('data-image-index');
-    }));
-
     slider({
         sliderBlock        : '.popup-transparency-slider-wrap',
         sliderItems        : '.popup-transparency-slider',
@@ -45,6 +33,20 @@ const transparency = () => {
             0   : 1
         }
     });
+
+    const transparencyItemImg = document.querySelectorAll('.transparency-item__img'),
+        popupTransparency = document.querySelector('.popup-transparency'),
+        sliderCounterContent_current = popupTransparency.querySelector('.slider-counter-content__current'),
+        sliderCounterContent_total = popupTransparency.querySelector('.slider-counter-content__total');
+
+    sliderCounterContent_total.textContent = transparencyItemImg.length;
+
+    console.log(transparencyItemImg);
+
+    transparencyItemImg.forEach(item => item.addEventListener('click', () => {
+        popupTransparency.classList.toggle('visible');
+        sliderCounterContent_current.textContent = item.getAttribute('data-image-index');
+    }));
 };
 
 export default transparency;
