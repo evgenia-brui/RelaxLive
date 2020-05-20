@@ -4456,7 +4456,6 @@ div.wave-block:nth-child(17):after {
       .popup-portfolio-slider__slide img {
         height: 150%; } }
   .popup-portfolio-text {
-    display: none;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
@@ -6501,6 +6500,7 @@ strong {
 .types-repair:not(.active),
 .designs-slider__style:not(.active),
 .popup-design-tab__item:not(.active),
+.popup-portfolio-text:not(.active-text),
 .popup-repair-types-content-table__list:not(.active) {display: none;}
 
 .slider-arrow svg,

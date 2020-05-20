@@ -34,6 +34,7 @@ const slider = params => {
         slideWidth,
         interval,
         sliderNavDinamic = '', // Переменная для слайдеров в табах
+        portfolio = '', // костыль
         thumbnailsId,
         thumbnails,
         pageWidth = document.documentElement.clientWidth,
@@ -158,6 +159,19 @@ const slider = params => {
         }));
     }
 
+    const openPopupPortfolio = () => {
+        portfolio[0].classList.add('active-text');
+    };
+    
+    const navPopupPortfolio = () => {
+        portfolio[currentSlide].classList.add('active-text');
+    };
+
+    if (sliderPortfolio) {
+        portfolio = document.querySelectorAll('.popup-portfolio-text');
+        openPopupPortfolio();
+    }
+
     const prevSlide = (elem, index, strClass) => {
         elem[index].classList.remove(strClass);
     };
@@ -200,6 +214,7 @@ const slider = params => {
 
         prevSlide(slide, currentSlide, sliderItemActive);
         if (sliderDots) prevSlide(dot, currentSlide, 'dot-active');
+        if (sliderPortfolio) prevSlide(portfolio, currentSlide, 'active-text');
 
         if (target.matches(sliderNavDinamic + sliderNext)) {
             currentSlide++;
@@ -233,6 +248,7 @@ const slider = params => {
 
         nextSlide(slide, currentSlide, sliderItemActive);
         if (sliderDots) nextSlide(dot, currentSlide, 'dot-active');
+        if (sliderPortfolio) nextSlide(portfolio, currentSlide, 'active-text');
     });
 
     if (sliderAutoplay) {
