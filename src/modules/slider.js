@@ -161,9 +161,7 @@ const slider = params => {
         const target = event.target;
         //console.log(event);
 
-        if (sliderMulti) {
-            sliderNavDinamic = `[data-current-tab="${slider.getAttribute('data-current-tab')}"]`;
-        }
+        if (sliderMulti) sliderNavDinamic = `[data-current-tab="${slider.getAttribute('data-current-tab')}"] `;
 
         if (!target.matches(sliderNavDinamic + sliderNav + ', .dot, ' + sliderItem)) {
             return;
