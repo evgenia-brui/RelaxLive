@@ -100,15 +100,18 @@ const slider = params => {
     };
 
     const pagination = () => {
+        console.log('pagination');
         const currentSlideText = document.querySelector(`${sliderBlock} ${sliderCurrentSlide}`),
             totalSlideText = document.querySelector(`${sliderBlock} ${sliderTotalSlide}`);
 
         if (sliderMulti) {
             let currentSlider = slider.getAttribute('data-current-tab');
             if (!currentSlider) currentSlider = 1;
-            const currentSliderElem = slider.querySelector(`[data-slider="${currentSlider}"]`);
-            const currentSliderElemSlide = currentSliderElem.querySelectorAll(`${sliderItem}:not(.clone)`);
+            //const currentSliderElem = slider.querySelector(`[data-slider="${currentSlider}"]`);
+            //const currentSliderElemSlide = currentSliderElem.querySelectorAll(`${sliderItem}:not(.clone)`);
+            const currentSliderElemSlide = slider.querySelectorAll(`[data-slider="${currentSlider}"] ${sliderItem}:not(.clone)`);
             let slideActive = 1;
+            console.log(currentSliderElemSlide);
             currentSliderElemSlide.forEach((item, index) => {
                 if (item.classList.contains(sliderItemActive)) slideActive = index + 1;
             });
@@ -141,7 +144,6 @@ const slider = params => {
     };
 
     const nextSlide = (elem, index, strClass) => {
-        if (sliderPagination) pagination();
         elem[index].classList.add(strClass);
         //slideItems.style.transform = `translate3d(${0 - slideWidth * (currentSlide - Math.floor(visibleSlide / 2))}px, 0px, 0px)`;
         if (visibleSlide < 3) {
@@ -150,6 +152,7 @@ const slider = params => {
             slideItems.style.transform = `translate3d(${0 - slideWidth * (currentSlide + Math.floor(visibleSlide / 2) + 1)}px, 0px, 0px)`;
         }
         // console.log('nextSlide' + currentSlide);
+        if (sliderPagination) pagination();
     };
 
     const stopSlide = () => {
