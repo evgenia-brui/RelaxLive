@@ -10,7 +10,7 @@ const slider = params => {
         sliderPagination = false,
         sliderCurrentSlide,
         sliderTotalSlide,
-        sliderNav,
+        sliderNav = false,
         sliderPrev,
         sliderNext,
         sliderAutoplay = false,
@@ -19,6 +19,7 @@ const slider = params => {
         sliderLoop = true,
         sliderMulti = false,
         sliderThumbnail = false,
+        sliderPortfolio = false,
     } = params;
 
     const slider = document.querySelector(sliderBlock),
@@ -33,6 +34,8 @@ const slider = params => {
         slideWidth,
         interval,
         sliderNavDinamic = '', // Переменная для слайдеров в табах
+        thumbnailsId,
+        thumbnails,
         pageWidth = document.documentElement.clientWidth,
         slideAll = document.querySelectorAll(`${sliderItems} ${sliderItem}`);
 
@@ -100,7 +103,6 @@ const slider = params => {
     };
 
     const pagination = () => {
-        console.log('pagination');
         const currentSlideText = document.querySelector(`${sliderBlock} ${sliderCurrentSlide}`),
             totalSlideText = document.querySelector(`${sliderBlock} ${sliderTotalSlide}`);
 
@@ -111,7 +113,7 @@ const slider = params => {
             //const currentSliderElemSlide = currentSliderElem.querySelectorAll(`${sliderItem}:not(.clone)`);
             const currentSliderElemSlide = slider.querySelectorAll(`[data-slider="${currentSlider}"] ${sliderItem}:not(.clone)`);
             let slideActive = 1;
-            console.log(currentSliderElemSlide);
+            // console.log(currentSliderElemSlide);
             currentSliderElemSlide.forEach((item, index) => {
                 if (item.classList.contains(sliderItemActive)) slideActive = index + 1;
             });
@@ -139,6 +141,23 @@ const slider = params => {
         const dot = document.querySelectorAll('.dot');
     }
 
+    if (sliderThumbnail) {
+        thumbnailsId = slideItems.getAttribute('data-slider');
+        thumbnails = slider.querySelectorAll(`[data-thumbnail="${thumbnailsId}"] ${sliderThumbnail}`);
+
+        thumbnails.forEach(item => item.addEventListener('click', () => {
+            prevSlide(thumbnails, currentSlide, 'preview_active');
+            
+            thumbnails.forEach((elem, index) => {
+                if (elem === item) {
+                    currentSlide = index;
+                }
+            });
+
+            nextSlide(thumbnails, currentSlide, 'preview_active');
+        }));
+    }
+
     const prevSlide = (elem, index, strClass) => {
         elem[index].classList.remove(strClass);
     };
@@ -162,7 +181,7 @@ const slider = params => {
     slider.addEventListener('click', event => {
         event.preventDefault();
         const target = event.target;
-        //console.log(event);
+        console.log(sliderNav);
 
         if (sliderMulti) sliderNavDinamic = `[data-current-tab="${slider.getAttribute('data-current-tab')}"] `;
 
@@ -177,7 +196,7 @@ const slider = params => {
         }
 
         //console.log(sliderItems + ' ' + sliderNav);
-        //console.log(sliderNavDinamic);
+        console.log('sliderNavDinamic22');
 
         prevSlide(slide, currentSlide, sliderItemActive);
         if (sliderDots) prevSlide(dot, currentSlide, 'dot-active');

@@ -2,10 +2,31 @@ import tabs from './tabs';
 import slider from './slider';
 import sliderLine from './sliderLine';
 
-const designs = () => {
+const portfolio = () => {
+    const linkPhotoPortfolio = document.querySelectorAll('.portfolio-slider__slide-frame');
+    const popupPortfolio = document.querySelector('.popup-portfolio');
+
+    linkPhotoPortfolio.forEach((item, index) => item.addEventListener('click', () => {
+        popupPortfolio.classList.toggle('visible');
+        console.log(index);
+    }));
+    
+    slider({
+        sliderBlock        : '.popup-portfolio-slider-wrap',
+        sliderItems        : '.popup-portfolio-slider',
+        sliderItem         : '.popup-portfolio-slider__slide',
+        sliderItemActive   : 'active-item',
+        sliderPagination   : true,
+        sliderCurrentSlide : '.slider-counter-content__current',
+        sliderTotalSlide   : '.slider-counter-content__total',
+        sliderNav          : '.popup-arrow',
+        sliderPrev         : '#popup_portfolio_left',
+        sliderNext         : '#popup_portfolio_right',
+        sliderPortfolio    : true,
+    });
+
+    /*
     const designsSlider = document.querySelector('.designs-slider').children;
-    const linkListDesigns = document.querySelector('.link-list-designs');
-    const popupDesigns = document.querySelector('.popup-design');
 
     tabs({
         classMainTabs     : '#designs',
@@ -79,6 +100,7 @@ const designs = () => {
             sliderSpeed        : 10000,
         });
     }
+    */
 };
 
-export default designs;
+export default portfolio;

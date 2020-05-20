@@ -20,6 +20,7 @@ import sendForm from './modules/sendForm';
 import transparency from './modules/transparency';
 import problems from './modules/problems';
 import designs from './modules/designs';
+import portfolio from './modules/portfolio';
 
 // Показ второго телефона в шапке
 showSecondPhone();
@@ -75,3 +76,6 @@ problems();
 
 // Дизайнерские решения
 designs();
+
+// Портфолио
+portfolio();

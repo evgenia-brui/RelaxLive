@@ -41,8 +41,6 @@ const transparency = () => {
 
     sliderCounterContent_total.textContent = transparencyItemImg.length;
 
-    console.log(transparencyItemImg);
-
     transparencyItemImg.forEach(item => item.addEventListener('click', () => {
         popupTransparency.classList.toggle('visible');
         sliderCounterContent_current.textContent = item.getAttribute('data-image-index');

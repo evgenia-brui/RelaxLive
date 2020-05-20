@@ -4764,7 +4764,6 @@ div.wave-block:nth-child(17):after {
           height: 50vh; } }
   .popup-design-text {
     position: relative;
-    display: none;
     width: 30%;
     height: 504px;
     margin-top: 10px;
@@ -5895,9 +5894,9 @@ div.wave-block:nth-child(17):after {
       visibility: visible;
       opacity: 1; } }
 
-#designs > .wrapper > div.preview-block.visible > .preview-block__item > .preview-block__item-inner.preview_active {
+.preview-block__item.preview_active {
   color: #ffffff; }
-  #designs > .wrapper > div.preview-block.visible > .preview-block__item > .preview-block__item-inner.preview_active ~ img {
+.preview-block__item.preview_active img {
     border-color: white; }
 
 #formula-arrow_left {
@@ -6490,6 +6489,7 @@ strong {
 .formula-slider-wrap,
 .transparency-slider-wrap,
 .problems-slider-wrap,
+.popup-portfolio-slider-wrap,
 #partners .wrapper {overflow: hidden;}
 .formula-slider__slide {float: left;}
 .formula-slider {transition: all 0.25s ease 0s;}
@@ -6500,6 +6500,7 @@ strong {
 
 .types-repair:not(.active),
 .designs-slider__style:not(.active),
+.popup-design-tab__item:not(.active),
 .popup-repair-types-content-table__list:not(.active) {display: none;}
 
 .slider-arrow svg,
