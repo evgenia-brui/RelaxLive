@@ -8,6 +8,8 @@ const tabs = params => {
         classContents,
         classContent,
         classContentActive,
+        dataAdditional = false,
+        dataAdditionalActive,
     } = params;
     
     const tabsBlock = document.querySelector(classMainTabs),
@@ -18,6 +20,7 @@ const tabs = params => {
     tabsBlock.setAttribute('data-current-tab', 1);
     document.querySelector(classButton).classList.add(classButtonActive);
     document.querySelector(classContent).classList.add(classContentActive);
+    if (dataAdditional) tabsBlock.querySelector(`[data-${dataAdditional}]`).classList.add(dataAdditionalActive);
     if (classTitleTabs) tabsBlock.querySelector(classTitleTabs).textContent = listButtons.querySelector(classButton).textContent;
 
     tabsButtons.forEach(button => button.addEventListener('click', event => {
@@ -33,6 +36,11 @@ const tabs = params => {
 
         listContents.querySelector(classContent + '.' + classContentActive).classList.remove(classContentActive);
         listContents.querySelector(`[data-tab-content="${showId}"]`).classList.add(classContentActive);
+
+        if (dataAdditional) {
+            tabsBlock.querySelector(`.${dataAdditionalActive}[data-${dataAdditional}]`).classList.remove(dataAdditionalActive);
+            tabsBlock.querySelector(`[data-${dataAdditional}="${showId}"]`).classList.add(dataAdditionalActive);
+        }
     }));
 };
 

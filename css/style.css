@@ -6499,6 +6499,7 @@ strong {
 .popup-repair-types-nav__item + .popup-repair-types-nav__item {margin-left: 10px;}
 
 .types-repair:not(.active),
+.designs-slider__style:not(.active),
 .popup-repair-types-content-table__list:not(.active) {display: none;}
 
 .slider-arrow svg,

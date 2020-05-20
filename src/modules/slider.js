@@ -18,6 +18,7 @@ const slider = params => {
         sliderCenterMode = false,
         sliderLoop = true,
         sliderMulti = false,
+        sliderThumbnail = false,
     } = params;
 
     const slider = document.querySelector(sliderBlock),
