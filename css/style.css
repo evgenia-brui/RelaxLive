@@ -2141,13 +2141,13 @@ div.wave-block:nth-child(17):after {
       .problems-item-popup-1 {
         min-height: 344px;
         padding-top: 35px;
-        top: 245px; }
+        /*top: 245px;*/ }
         @media (min-width: 1025px) {
           .problems-item-popup-1 {
-            top: 140px; } }
+            /*top: 140px;*/ } }
         @media (max-width: 575px) {
           .problems-item-popup-1 {
-            top: 190px; } }
+            /*top: 190px;*/ } }
         .problems-item-popup-1:before {
           position: absolute;
           top: 0;
@@ -2156,16 +2156,10 @@ div.wave-block:nth-child(17):after {
           height: 100%;
           content: '';
           background: url("../images/problems/popup_bg_1.svg") no-repeat;
-          background-size: contain;
-          -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
           z-index: -1; }
           @media (max-width: 575px) {
             .problems-item-popup-1:before {
-              background: url("../images/problems/popup_bg_mobile.svg") no-repeat;
-              background-size: contain;
-              -webkit-transform: rotate(360deg);
-              transform: rotate(360deg); } }
+              background: url("../images/problems/popup_bg_mobile.svg") no-repeat; } }
       .problems-item-popup-2 {
         min-height: 304px; }
         @media (max-width: 575px) {
@@ -2509,7 +2503,7 @@ div.wave-block:nth-child(17):after {
   z-index: 1; }
   @media (max-width: 1024px) {
     .preview-block {
-      visibility: hidden; } }
+      visibility: hidden !important; } }
   .preview-block__item {
     position: relative;
     width: 156px;
@@ -3445,7 +3439,7 @@ div.wave-block:nth-child(17):after {
       margin-right: auto; }
       @media (max-width: 1024px) {
         .partners-slider__slide {
-          max-width: 114px;
+          /*max-width: 114px;*/
           min-height: auto; }
           .partners-slider__slide svg {
             max-width: 114px;
@@ -3454,7 +3448,7 @@ div.wave-block:nth-child(17):after {
             margin-right: auto; } }
       @media (max-width: 575px) {
         .partners-slider__slide {
-          max-width: 134px;
+          /*max-width: 134px;*/
           min-height: auto; }
           .partners-slider__slide svg {
             max-width: 134px;

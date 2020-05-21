@@ -9,6 +9,7 @@ import "mdn-polyfills/Node.prototype.prepend";
 import 'mdn-polyfills/Element.prototype.matches';
 import 'mdn-polyfills/Node.prototype.remove';
 
+import elementClosest from 'element-closest';
 import showSecondPhone from './modules/showSecondPhone';
 import popupMenu from './modules/popupMenu';
 import smoothScroll from './modules/smoothScroll';
@@ -28,6 +29,10 @@ import transparency from './modules/transparency';
 import problems from './modules/problems';
 import designs from './modules/designs';
 import portfolio from './modules/portfolio';
+import validation from './modules/validation';
+
+// Полифил closest
+elementClosest(window);
 
 // Показ второго телефона в шапке
 showSecondPhone();
@@ -50,6 +55,9 @@ popupPrivacy();
 
 // Маска телефона
 maskPhone();
+
+// Валидация полей
+validation();
 
 // accordion
 accordion();

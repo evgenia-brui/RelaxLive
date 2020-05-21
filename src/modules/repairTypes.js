@@ -1,4 +1,5 @@
 import slider from './slider';
+import sliderLine from './sliderLine';
 import tabs from './tabs';
 
 const repairTypes = () => {
@@ -31,6 +32,14 @@ const repairTypes = () => {
         classContents     : '.repair-types-slider',
         classContent      : '.types-repair',
         classContentActive: 'active',
+    });
+
+    sliderLine({
+        classList       : '.nav-list-repair',
+        classNav        : '.repair-types-nav',
+        classButton     : 'button',
+        classButtonLeft : '#nav-arrow-repair-left_base',
+        classButtonRight: '#nav-arrow-repair-right_base',
     });
 };
 

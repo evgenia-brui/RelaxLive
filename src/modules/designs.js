@@ -34,9 +34,12 @@ const designs = () => {
             sliderItem         : '.designs-slider__style-slide',
             sliderItemActive   : 'active-item',
             sliderThumbnail    : '.preview-block__item',
-            sliderNav          : '.slider-arrow',
-            sliderPrev         : '#partners-arrow_left',
-            sliderNext         : '#partners-arrow_right',
+            sliderPagination   : true,
+            sliderCurrentSlide : '.slider-counter-content__current',
+            sliderTotalSlide   : '.slider-counter-content__total',
+            sliderNav          : '.slider-arrow-tablet-mobile',
+            sliderPrev         : '#design_left',
+            sliderNext         : '#design_right',
         });
     }
 

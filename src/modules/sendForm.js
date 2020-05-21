@@ -1,7 +1,7 @@
 const sendForm = () => {
     const errorMessage = 'Что-то пошло не так...',
         errorPrivacy = 'Согласитесь с условиями',
-        loadMessage = '<img src="/images/preloader.gif" alt="loading" style="height: 50px;" />';
+        loadMessage = '<img src="../images/preloader.gif" alt="loading" style="height: 50px;" />';
 
     const forms = document.querySelectorAll('form'),
         statusMessage = document.createElement('div'),
@@ -38,6 +38,7 @@ const sendForm = () => {
                         }
                         popupThank.classList.toggle('visible');
                         form.reset();
+                        setTimeout(() => statusMessage.textContent = '', 5000);
                     })
                     .catch(error => {
                         statusMessage.textContent = errorMessage;
