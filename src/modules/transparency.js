@@ -39,7 +39,7 @@ const transparency = () => {
         sliderCounterContent_current = popupTransparency.querySelector('.slider-counter-content__current'),
         sliderCounterContent_total = popupTransparency.querySelector('.slider-counter-content__total');
 
-    sliderCounterContent_total.textContent = transparencyItemImg.length;
+    sliderCounterContent_total.textContent = transparencyItemImg.length / 2;
 
     transparencyItemImg.forEach(item => item.addEventListener('click', () => {
         popupTransparency.classList.toggle('visible');

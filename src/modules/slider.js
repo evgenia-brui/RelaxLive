@@ -116,11 +116,9 @@ const slider = params => {
             });
             currentSlideText.textContent = slideActive;
             totalSlideText.textContent = currentSliderElemSlide.length;
-        console.log(currentSliderElemSlide.length);
         } else {
             currentSlideText.textContent = currentSlide + 1;
             totalSlideText.textContent = slideLength;
-        console.log(sliderBlock + ' ' + slideLength);
         }
     };
 
