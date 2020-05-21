@@ -60,7 +60,6 @@ const portfolio = () => {
         } else {
             visibleSlide = 1;
         }
-        console.log(visibleSlide);
     };
 
     const renderSlide = () => {
@@ -98,7 +97,6 @@ const portfolio = () => {
         } else {
             portfolioSliderNavLeft.classList.remove('show');
         }
-        console.log(currentSlide, portfolioSliderSlide.length);
     };
 
     const nextSlide = () => {

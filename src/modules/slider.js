@@ -1,5 +1,4 @@
 const slider = params => {
-    // console.log(params);
     const {
         sliderBlock,
         sliderItems,
@@ -83,8 +82,6 @@ const slider = params => {
     };
 
     const loop = () => {
-        // console.log(slideLength, slideLengthHalf);
-
         for (let i = 0; i < slideLengthHalf; i++) {
             const clone = slide[i].cloneNode(true);
             clone.classList.add('clone');
@@ -114,7 +111,6 @@ const slider = params => {
             //const currentSliderElemSlide = currentSliderElem.querySelectorAll(`${sliderItem}:not(.clone)`);
             const currentSliderElemSlide = slider.querySelectorAll(`[data-slider="${currentSlider}"] ${sliderItem}:not(.clone)`);
             let slideActive = 1;
-            // console.log(currentSliderElemSlide);
             currentSliderElemSlide.forEach((item, index) => {
                 if (item.classList.contains(sliderItemActive)) slideActive = index + 1;
             });
@@ -158,14 +154,6 @@ const slider = params => {
             nextSlide(thumbnails, currentSlide, 'preview_active');
         }));
     }
-    
-    const openPopupPortfolio = () => {
-        console.log('openPopupPortfolio');
-    };
-
-    const navPopupPortfolio = () => {
-        portfolio[currentSlide].classList.add('active-text');
-    };
 
     if (sliderPortfolio) {
         portfolio = document.querySelectorAll('.popup-portfolio-text');
@@ -174,16 +162,9 @@ const slider = params => {
         const popupSliderPortfolio = document.querySelector('.popup-portfolio-slider');
         const popupSliderPortfolioSlide = popupSliderPortfolio.querySelectorAll('.popup-portfolio-slider__slide');
         linkPhotoPortfolio.forEach((item, index) => item.addEventListener('click', () => {
-            console.log(popupSliderPortfolioSlide);
-            console.log(currentSlide);
             prevSlide(popupSliderPortfolioSlide, currentSlide, 'active-item');
             currentSlide = +sliderPortfolio.getAttribute('data-slide-click');
-            console.log(currentSlide);
             nextSlide(popupSliderPortfolioSlide, currentSlide, 'active-item');
-            /*sliderPortfolio.setAttribute('data-slide-click', index);
-            popupPortfolio.classList.toggle('visible');
-            popupPortfolio.querySelector('.active-text').classList.remove('active-text');
-            portfolio[index].classList.add('active-text');*/
         }));
     }
 
@@ -199,7 +180,6 @@ const slider = params => {
         } else {
             slideItems.style.transform = `translate3d(${0 - slideWidth * (currentSlide + Math.floor(visibleSlide / 2) + 1)}px, 0px, 0px)`;
         }
-        // console.log('nextSlide' + currentSlide);
         if (sliderPagination) pagination();
     };
 
