@@ -3,12 +3,17 @@ import slider from './slider';
 import sliderLine from './sliderLine';
 
 const portfolio = () => {
-    const linkPhotoPortfolio = document.querySelectorAll('.portfolio-slider__slide-frame');
+    const sliderPortfolio = document.querySelector('.portfolio-slider');
+    const linkPhotoPortfolio = sliderPortfolio.querySelectorAll('.portfolio-slider__slide-frame');
     const popupPortfolio = document.querySelector('.popup-portfolio');
+    const portfolio = document.querySelectorAll('.popup-portfolio-text');
+    portfolio[0].classList.add('active-text');
 
     linkPhotoPortfolio.forEach((item, index) => item.addEventListener('click', () => {
+        sliderPortfolio.setAttribute('data-slide-click', index);
         popupPortfolio.classList.toggle('visible');
-        console.log(index);
+        popupPortfolio.querySelector('.active-text').classList.remove('active-text');
+        portfolio[index].classList.add('active-text');
     }));
     
     slider({

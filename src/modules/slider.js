@@ -158,18 +158,33 @@ const slider = params => {
             nextSlide(thumbnails, currentSlide, 'preview_active');
         }));
     }
-
-    const openPopupPortfolio = () => {
-        portfolio[0].classList.add('active-text');
-    };
     
+    const openPopupPortfolio = () => {
+        console.log('openPopupPortfolio');
+    };
+
     const navPopupPortfolio = () => {
         portfolio[currentSlide].classList.add('active-text');
     };
 
     if (sliderPortfolio) {
         portfolio = document.querySelectorAll('.popup-portfolio-text');
-        openPopupPortfolio();
+        const sliderPortfolio = document.querySelector('.portfolio-slider');
+        const linkPhotoPortfolio = sliderPortfolio.querySelectorAll('.portfolio-slider__slide-frame');
+        const popupSliderPortfolio = document.querySelector('.popup-portfolio-slider');
+        const popupSliderPortfolioSlide = popupSliderPortfolio.querySelectorAll('.popup-portfolio-slider__slide');
+        linkPhotoPortfolio.forEach((item, index) => item.addEventListener('click', () => {
+            console.log(popupSliderPortfolioSlide);
+            console.log(currentSlide);
+            prevSlide(popupSliderPortfolioSlide, currentSlide, 'active-item');
+            currentSlide = +sliderPortfolio.getAttribute('data-slide-click');
+            console.log(currentSlide);
+            nextSlide(popupSliderPortfolioSlide, currentSlide, 'active-item');
+            /*sliderPortfolio.setAttribute('data-slide-click', index);
+            popupPortfolio.classList.toggle('visible');
+            popupPortfolio.querySelector('.active-text').classList.remove('active-text');
+            portfolio[index].classList.add('active-text');*/
+        }));
     }
 
     const prevSlide = (elem, index, strClass) => {
@@ -195,7 +210,8 @@ const slider = params => {
     slider.addEventListener('click', event => {
         event.preventDefault();
         const target = event.target;
-        console.log(sliderNav);
+        
+        if (sliderPortfolio) {}
 
         if (sliderMulti) sliderNavDinamic = `[data-current-tab="${slider.getAttribute('data-current-tab')}"] `;
 
