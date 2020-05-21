@@ -5932,6 +5932,8 @@ div.wave-block:nth-child(17):after {
 
 #portfolio-arrow_left {
   display: none; }
+#portfolio-arrow_left.show {
+    display: flex; }
   @media (max-width: 900px) {
     #portfolio-arrow_left {
       left: -50px; } }
@@ -6503,9 +6505,13 @@ strong {
 .popup-portfolio-text:not(.active-text),
 .popup-repair-types-content-table__list:not(.active) {display: none;}
 
+.portfolio-slider-mobile .portfolio-slider__slide-frame {opacity: 0;overflow: hidden;}
+.portfolio-slider-mobile .portfolio-slider__slide-frame.active-item {opacity: 1;}
+
 .slider-arrow svg,
 .nav-arrow svg,
 .svg-wrap svg,
+.slider-arrow-tablet-mobile svg,
 .popup-arrow svg {pointer-events: none;}
 
 @media (min-width: 850px) {

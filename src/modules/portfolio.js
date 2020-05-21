@@ -3,10 +3,17 @@ import slider from './slider';
 import sliderLine from './sliderLine';
 
 const portfolio = () => {
-    const sliderPortfolio = document.querySelector('.portfolio-slider');
+    const sliderPortfolioWrap = document.querySelector('.portfolio-slider-wrap');
+    const sliderPortfolio = sliderPortfolioWrap.querySelector('.portfolio-slider');
+    const portfolioSliderSlide = sliderPortfolio.querySelectorAll('.portfolio-slider__slide');
     const linkPhotoPortfolio = sliderPortfolio.querySelectorAll('.portfolio-slider__slide-frame');
+    const portfolioSliderNavLeft = sliderPortfolioWrap.querySelector('#portfolio-arrow_left');
+    const portfolioSliderNavRight = sliderPortfolioWrap.querySelector('#portfolio-arrow_right');
     const popupPortfolio = document.querySelector('.popup-portfolio');
     const portfolio = document.querySelectorAll('.popup-portfolio-text');
+
+    let pageWidth, slideWidth, visibleSlide = 3, currentSlide = 0;
+
     portfolio[0].classList.add('active-text');
 
     linkPhotoPortfolio.forEach((item, index) => item.addEventListener('click', () => {
@@ -29,83 +36,96 @@ const portfolio = () => {
         sliderNext         : '#popup_portfolio_right',
         sliderPortfolio    : true,
     });
-
-    /*
-    const designsSlider = document.querySelector('.designs-slider').children;
-
-    tabs({
-        classMainTabs     : '#designs',
-        classButtons      : '#designs-list',
-        classButton       : '.designs-nav__item_base',
-        classButtonActive : 'active',
-        classContents     : '.designs-slider',
-        classContent      : '.designs-slider__style',
-        classContentActive: 'active',
-        dataAdditional    : 'thumbnail',
-        dataAdditionalActive: 'visible',
+    
+    slider({
+        sliderBlock        : '.portfolio-slider-wrap',
+        sliderItems        : '.portfolio-slider-mobile',
+        sliderItem         : '.portfolio-slider__slide-frame',
+        sliderItemActive   : 'active-item',
+        sliderPagination   : true,
+        sliderCurrentSlide : '.slider-counter-content__current',
+        sliderTotalSlide   : '.slider-counter-content__total',
+        sliderNav          : '.slider-arrow-tablet-mobile',
+        sliderPrev         : '#portfolio-arrow-mobile_left',
+        sliderNext         : '#portfolio-arrow-mobile_right',
     });
 
-    sliderLine({
-        classList       : '#designs-list',
-        classNav        : '.nav-designs',
-        classButton     : 'button',
-        classButtonLeft : '#nav-arrow-designs_left',
-        classButtonRight: '#nav-arrow-designs_right',
-    });
+    // Мой слайдер не очень подходит, много нужно разбираться, переделывать
 
-    for (let i = 1; i <= designsSlider.length; i++) {
-        slider({
-            sliderBlock        : '#designs',
-            sliderItems        : '.designs-slider__style' + i,
-            sliderItem         : '.designs-slider__style-slide',
-            sliderItemActive   : 'active-item',
-            sliderThumbnail    : '.preview-block__item',
-            sliderNav          : '.slider-arrow',
-            sliderPrev         : '#partners-arrow_left',
-            sliderNext         : '#partners-arrow_right',
+    const getVisibleSlide = () => {
+        if (pageWidth > 900) {
+            visibleSlide = 3;
+        } else if (pageWidth > 800) {
+            visibleSlide = 2;
+        } else {
+            visibleSlide = 1;
+        }
+        console.log(visibleSlide);
+    };
+
+    const renderSlide = () => {
+        // получим ширину слайдера formula-slider-wrap
+        const sliderWidth = sliderPortfolioWrap.clientWidth;
+        // эту ширину делем на количесто слайдов видимых
+        slideWidth = sliderWidth / visibleSlide;
+        // получаем ширину слайда в px
+        // количество слайдов * на ширину и записываем ширину formula-slider
+        sliderPortfolio.style.width = slideWidth * portfolioSliderSlide.length + 'px';
+        sliderPortfolio.style.transition = 'all 0.25s ease 0s';
+        portfolioSliderSlide.forEach(item => {
+            item.style.float = 'left';
+            item.style.width = slideWidth + 'px';
         });
-    }
+    };
 
-    linkListDesigns.addEventListener('click', () => {
-        popupDesigns.classList.toggle('visible');
+    const correctCurrentSlide = () => {
+        if (currentSlide >= portfolioSliderSlide.length) {
+            currentSlide = 0;
+        }
+
+        if (currentSlide < 0) {
+            currentSlide = portfolioSliderSlide.length - 1;
+        }
+
+        if (visibleSlide + currentSlide === portfolioSliderSlide.length) {
+            portfolioSliderNavRight.classList.add('hide');
+        } else {
+            portfolioSliderNavRight.classList.remove('hide');
+        }
+
+        if (currentSlide > 0) {
+            portfolioSliderNavLeft.classList.add('show');
+        } else {
+            portfolioSliderNavLeft.classList.remove('show');
+        }
+        console.log(currentSlide, portfolioSliderSlide.length);
+    };
+
+    const nextSlide = () => {
+        sliderPortfolio.style.transform = `translate3d(${0 - slideWidth * currentSlide}px, 0px, 0px)`;
+    };
+
+    portfolioSliderNavLeft.addEventListener('click', () => {
+        currentSlide--;
+        correctCurrentSlide();
+        nextSlide();
     });
 
-    tabs({
-        classMainTabs     : '.popup-dialog-design',
-        classButtons      : '#nav-list-popup-designs',
-        classButton       : '.designs-nav__item_popup',
-        classButtonActive : 'active',
-        classContents     : '.popup-design-tab',
-        classContent      : '.popup-design-tab__item',
-        classContentActive: 'active',
+    portfolioSliderNavRight.addEventListener('click', () => {
+        currentSlide++;
+        correctCurrentSlide();
+        nextSlide();
     });
 
-    sliderLine({
-        classList       : '#nav-list-popup-designs',
-        classNav        : '.nav-designs',
-        classButton     : 'button',
-        classButtonLeft : '#nav-arrow-popup-designs_left',
-        classButtonRight: '#nav-arrow-popup-designs_right',
-    });
+    const responsive = () => {
+        pageWidth = document.documentElement.clientWidth;
+        getVisibleSlide();
+        renderSlide();
+    };
 
-    for (let i = 1; i <= designsSlider.length; i++) {
-        slider({
-            sliderBlock        : '.popup-design-slider-wrap' + i,
-            sliderItems        : '.popup-designs-slider__style' + i,
-            sliderItem         : '.popup-design-slider__style-slide',
-            sliderItemActive   : 'active-item',
-            sliderDots         : false,
-            sliderPagination   : true,
-            sliderCurrentSlide : '#popup-designs-counter-' + i + ' .slider-counter-content__current',
-            sliderTotalSlide   : '#popup-designs-counter-' + i + ' .slider-counter-content__total',
-            sliderNav          : '.popup-arrow',
-            sliderPrev         : '#popup_design_left-' + i,
-            sliderNext         : '#popup_design_right-' + i,
-            sliderAutoplay     : false,
-            sliderSpeed        : 10000,
-        });
-    }
-    */
+    responsive();
+    window.addEventListener('resize', () => responsive());
+
 };
 
 export default portfolio;

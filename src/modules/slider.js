@@ -210,8 +210,6 @@ const slider = params => {
     slider.addEventListener('click', event => {
         event.preventDefault();
         const target = event.target;
-        
-        if (sliderPortfolio) {}
 
         if (sliderMulti) sliderNavDinamic = `[data-current-tab="${slider.getAttribute('data-current-tab')}"] `;
 
@@ -224,9 +222,6 @@ const slider = params => {
                 return;
             }
         }
-
-        //console.log(sliderItems + ' ' + sliderNav);
-        console.log('sliderNavDinamic22');
 
         prevSlide(slide, currentSlide, sliderItemActive);
         if (sliderDots) prevSlide(dot, currentSlide, 'dot-active');
