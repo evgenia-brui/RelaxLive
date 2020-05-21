@@ -1,6 +1,13 @@
 'use strict';
 import '@babel/polyfill';
 import 'nodelist-foreach-polyfill';
+import 'es6-promise';
+import 'fetch-polyfill';
+import 'element-closest';
+import 'mdn-polyfills/Node.prototype.append';
+import "mdn-polyfills/Node.prototype.prepend";
+import 'mdn-polyfills/Element.prototype.matches';
+import 'mdn-polyfills/Node.prototype.remove';
 
 import showSecondPhone from './modules/showSecondPhone';
 import popupMenu from './modules/popupMenu';
